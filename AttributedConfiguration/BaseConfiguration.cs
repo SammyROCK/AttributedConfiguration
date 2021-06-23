@@ -6,15 +6,16 @@ using System.Linq;
 
 namespace AttributedConfiguration {
 	public abstract class BaseConfiguration {
-		private readonly IConfiguration configuration;
 		private readonly string? path;
 
 		public BaseConfiguration(IConfiguration configuration) {
-			this.configuration = configuration;
+			this.Configuration = configuration;
 			this.path = configuration is IConfigurationSection configurationSection
 				? configurationSection.Path
 				: null;
 		}
+
+		public IConfiguration Configuration { get; }
 
 		protected TEnum GetEnum<TEnum>(string key) where TEnum : struct
 			=> Enum.Parse<TEnum>(this.GetString(key), true);
@@ -49,7 +50,7 @@ namespace AttributedConfiguration {
 				?? throw new ConfigurationNotFoundException(this.BuildConfigurationPath(key));
 
 		protected string? TryGetString(string key)
-			=> this.configuration[key];
+			=> this.Configuration[key];
 
 		protected string[] GetStrings(string key)
 			=> this.GetSections(key)
@@ -57,7 +58,7 @@ namespace AttributedConfiguration {
 				.ToArray();
 
 		protected T? TryGet<T>(string key) where T : BaseConfiguration {
-			var section = this.configuration.GetSection(key);
+			var section = this.Configuration.GetSection(key);
 			if(section.Exists() is false) { return null; }
 
 			return section.Resolve<T>();
@@ -86,7 +87,7 @@ namespace AttributedConfiguration {
 				.GetChildren();
 
 		protected IConfigurationSection GetSection(string key)
-			=> this.configuration.GetSection(key)
+			=> this.Configuration.GetSection(key)
 				?? throw new ConfigurationNotFoundException(this.BuildConfigurationPath(key));
 
 		private string BuildConfigurationPath(string key)
