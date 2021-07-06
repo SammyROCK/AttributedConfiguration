@@ -84,15 +84,15 @@ namespace AttributedConfiguration {
 				.Select(section => section.Value)
 				.ToArray();
 
+		protected T Get<T>(string key) where T : BaseConfiguration
+			=> this.GetSection(key).Resolve<T>();
+
 		protected T? TryGet<T>(string key) where T : BaseConfiguration {
 			var section = this.Configuration.GetSection(key);
 			if(section.Exists() is false) { return null; }
 
 			return section.Resolve<T>();
 		}
-
-		protected T Get<T>(string key) where T : BaseConfiguration
-			=> this.GetSection(key).Resolve<T>();
 
 		protected T[] GetMany<T>(string key) where T : BaseConfiguration
 			=> this.GetSections(key)
