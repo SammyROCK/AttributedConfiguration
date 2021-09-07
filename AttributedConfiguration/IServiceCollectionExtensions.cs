@@ -36,5 +36,22 @@ namespace AttributedConfiguration {
 			}
 			return serviceCollection;
 		}
+
+		public static IServiceCollection AddAttributedConfigurationsFromNamespaceOf<T>(this IServiceCollection serviceCollection, IConfiguration configuration) {
+			foreach(var (type, configureAttribute) in typeof(T).Assembly.EnumerateTypesWithAttribute<ConfigureAttribute>()) {
+				if(type.Namespace != typeof(T).Namespace) { continue; }
+
+				var serviceType = configureAttribute.ServiceType
+					?? type.GetInterfaces().FirstOrDefault()
+					?? type;
+
+				serviceCollection.TryAdd(new ServiceDescriptor(
+					serviceType,
+					serviceProvider => configuration.Resolve(type, configureAttribute),
+					ServiceLifetime.Singleton
+				));
+			}
+			return serviceCollection;
+		}
 	}
 }
