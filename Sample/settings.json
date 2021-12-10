@@ -1,0 +1,68 @@
+{
+  "bool": true,
+  "int": 123,
+  "double": 123.4,
+  "decimal": 123.4,
+  "char": "a",
+  "string": "cachorro",
+  "enum": "something",
+  "timeInSeconds": 156.5,
+
+  "boolArray": [ true, false ],
+  "intArray": [ 123, 456 ],
+  "decimalArray": [ 123.4, 567.8 ],
+  "charArray": [ "a", "b" ],
+  "stringArray": [ "cachorro", "quente" ],
+  "enumArray": [ "something", "somethingElse", 1, 2 ],
+  "timeArrayInSeconds": [ 50.5, 70.6 ],
+  "timeArrayInMinutes": [ 2.5, 1.6 ],
+  "nestedArray": [
+    {
+      "char": "b",
+      "string": "gato",
+      "enum": "somethingElse",
+      "timeInMinutes": 240.5
+    },
+    {
+      "bool": false,
+      "int": 321,
+      "decimal": 432.1,
+      "timeInDays": 1.25
+    }
+  ],
+
+  "nested": {
+    "bool": false,
+    "int": 321,
+    "decimal": 432.1,
+    "char": "b",
+    "string": "gato",
+    "enum": "somethingElse",
+    "timeInDays": 1.25
+  },
+
+  "intIntDict": {
+    "1": 1234,
+    "10": 12345
+  },
+
+  "stringStringDict": {
+    "abc": "ghi",
+    "def": "jkl"
+  },
+
+  "stringObjectDict": {
+    "abc": {
+      "char": "b",
+      "string": "gato",
+      "enum": "somethingElse",
+      "timeInMinutes": 240.5
+    },
+    "def": {
+      "bool": false,
+      "int": 321,
+      "decimal": 432.1,
+      "timeInDays": 1.25
+    }
+  }
+}
