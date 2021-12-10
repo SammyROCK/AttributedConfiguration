@@ -1,61 +1,61 @@
 #pragma warning disable CS8618
 using AttributedConfiguration;
 
-namespace Sample {
-	[Configure]
-	public class RootConfiguration {
-		public bool Bool { get; }
+namespace Sample;
 
-		public int Int { get; }
+[Configure]
+public class RootConfiguration {
+	public bool Bool { get; }
 
-		public double Double { get; }
+	public int Int { get; }
 
-		public decimal Decimal { get; }
+	public double Double { get; }
 
-		public char Char { get; }
+	public decimal Decimal { get; }
 
-		public string String { get; }
+	public char Char { get; }
 
-		public SampleEnum Enum { get; }
+	public string String { get; }
 
-		public TimeSpan Time { get; }
+	public SampleEnum Enum { get; }
 
-		[Name("Nested")]
-		public NestedConfiguration Object { get; }
+	public TimeSpan Time { get; }
 
-		public bool[] BoolArray { get; }
+	[Name("Nested")]
+	public NestedConfiguration Object { get; }
 
-		public int[] IntArray { get; }
+	public bool[] BoolArray { get; }
 
-		public decimal[] DecimalArray { get; }
+	public int[] IntArray { get; }
 
-		public char[] CharArray { get; }
+	public decimal[] DecimalArray { get; }
 
-		public string[] StringArray { get; }
+	public char[] CharArray { get; }
 
-		public SampleEnum[] EnumArray { get; }
+	public string[] StringArray { get; }
 
-		public TimeSpan[] TimeArray { get; }
+	public SampleEnum[] EnumArray { get; }
 
-		[Name("NestedArray")]
-		public NestedConfiguration[] ObjectArray { get; }
+	public TimeSpan[] TimeArray { get; }
 
-		[Optional]
-		public string[] MissingStringArray { get; }
+	[Name("NestedArray")]
+	public NestedConfiguration[] ObjectArray { get; }
 
-		[Optional]
-		public SampleEnum[] MissingEnumArray { get; }
+	[Optional]
+	public string[] MissingStringArray { get; }
 
-		[Optional]
-		public TimeSpan[] MissingTimeArray { get; }
+	[Optional]
+	public SampleEnum[] MissingEnumArray { get; }
 
-		[Optional]
-		public Dictionary<int, int> IntIntDict { get; }
+	[Optional]
+	public TimeSpan[] MissingTimeArray { get; }
 
-		[Optional]
-		public Dictionary<string, string> StringStringDict { get; }
+	[Optional]
+	public Dictionary<int, int> IntIntDict { get; }
 
-		[Optional]
-		public Dictionary<string, NestedConfiguration> StringObjectDict { get; }
-	}
+	[Optional]
+	public Dictionary<string, string> StringStringDict { get; }
+
+	[Optional]
+	public Dictionary<string, NestedConfiguration> StringObjectDict { get; }
 }

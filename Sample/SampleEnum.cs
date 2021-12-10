@@ -1,9 +1,9 @@
-namespace Sample {
-	public enum SampleEnum {
-		Undefined = 0,
+namespace Sample;
 
-		Something,
+public enum SampleEnum {
+	Undefined = 0,
 
-		SomethingElse
-	}
+	Something,
+
+	SomethingElse
 }
