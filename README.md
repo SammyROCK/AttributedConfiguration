@@ -1,5 +1,5 @@
 # AttributedConfiguration
-Fornece configuração por atributos para projetos NetCore.
+Fornece configuração por atributos para projetos NetCore, lendo os arquivos de configuração e os injetando via atributo como dependência na classe. Isso faz com que não se dependa mais de uma string para ler a configuração, pois há uma classe que a representa.
 
 ### O que você vai encontrar aqui:
   - Instalação
