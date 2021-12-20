@@ -38,7 +38,7 @@ namespace Application
 ```
 
 ### Desenvolver classes de configuração:
-Adicione a diretiva `using` para o pacote, o atributo `Configure` e faça a classe herdar da `BaseConfiguration` de `AttributedConfiguration`:
+Adicione a diretiva `using` para o pacote e o atributo `Configure`:
 
 ```c#
 using AttributedConfiguration;
@@ -46,19 +46,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace Parselmouth.Configuration {
 	[Configure("[Configuration]")]
-	public class ElasticSearchConfiguration : BaseConfiguration {
-		public ElasticSearchConfiguration(IConfiguration configuration)
-			: base(configuration) {
-			this.Server = this.GetString(nameof(this.Server));
-			this.Index = this.GetString(nameof(this.Index));
-		}
-
+	public class ElasticSearchConfiguration {
 		public string Server { get; }
 
 		public string Index { get; }
+		
+		[Optional]
+		public TimeSpan? Timeout { get; set; }
 	}
 }
 ```
+
 ## Exemplo
 <details> <summary>Veja aqui um exemplo de uso</summary>
 
@@ -74,12 +72,7 @@ namespace Parselmouth.Configuration {
 	}
 
 	[Configure("[Configuration]")]
-	public class PinConfiguration : BaseConfiguration, IPinConfiguration {
-		public PinConfiguration(IConfiguration configuration) : base(configuration) {
-			this.Count = this.GetInt(nameof(this.Count));
-			this.Duration = this.GetTimespan(nameof(this.Duration), TimeSource.InMinutes);
-		}
-
+	public class PinConfiguration : IPinConfiguration {
 		public int Count { get; set; }
 		public TimeSpan Duration { get; set; }
 	}
