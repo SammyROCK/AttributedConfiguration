@@ -1,4 +1,4 @@
-#pragma warning disable CS8618
+#nullable disable warnings
 using AttributedConfiguration;
 
 namespace Sample;
