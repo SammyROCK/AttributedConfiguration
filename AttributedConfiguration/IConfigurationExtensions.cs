@@ -70,9 +70,11 @@ public static class IConfigurationExtensions {
 		if(optionalAttribute is not null) {
 			var value = configuration.TryGet(key, propertyType);
 
-			value ??= optionalAttribute.TimeSource is not TimeSource.Undefined
-				? optionalAttribute.TimeSource.Parse((double)optionalAttribute.DefaultValue!)
-				: optionalAttribute.DefaultValue;
+			if(optionalAttribute is DefaultAttribute defaultAttribute) {
+				value ??= defaultAttribute.TimeSource is not TimeSource.Undefined
+					? defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!)
+					: defaultAttribute.DefaultValue;
+			}
 
 			return value;
 		}

@@ -21,7 +21,7 @@ public class RootConfiguration {
 
 	public TimeSpan Time { get; }
 
-	[Optional(55.5, TimeSource.InSeconds)]
+	[Default(55.5, TimeSource.InSeconds)]
 	public TimeSpan DefaultMissingTime { get; }
 
 	[Name("Nested")]
