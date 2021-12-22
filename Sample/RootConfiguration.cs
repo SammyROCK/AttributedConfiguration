@@ -1,4 +1,4 @@
-#pragma warning disable CS8618
+#nullable disable warnings
 using AttributedConfiguration;
 
 namespace Sample;
@@ -20,6 +20,9 @@ public class RootConfiguration {
 	public SampleEnum Enum { get; }
 
 	public TimeSpan Time { get; }
+
+	[Default(55.5, TimeSource.InSeconds)]
+	public TimeSpan DefaultMissingTime { get; }
 
 	[Name("Nested")]
 	public NestedConfiguration Object { get; }

@@ -55,7 +55,7 @@ public static class IConfigurationExtensions {
 	}
 
 	public static object? GetValue(this IConfiguration configuration, PropertyInfo propertyInfo) {
-		var optional = propertyInfo.GetCustomAttribute<OptionalAttribute>() is not null;
+		var optionalAttribute = propertyInfo.GetCustomAttribute<OptionalAttribute>();
 		var key = propertyInfo.GetCustomAttribute<NameAttribute>()?.Name ?? propertyInfo.Name;
 
 		var propertyType = propertyInfo.PropertyType;
@@ -67,7 +67,17 @@ public static class IConfigurationExtensions {
 			}
 		}
 
-		if(optional) { return configuration.TryGet(key, propertyType); }
+		if(optionalAttribute is not null) {
+			var value = configuration.TryGet(key, propertyType);
+
+			if(optionalAttribute is DefaultAttribute defaultAttribute) {
+				value ??= defaultAttribute.TimeSource is not TimeSource.Undefined
+					? defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!)
+					: defaultAttribute.DefaultValue;
+			}
+
+			return value;
+		}
 
 		return configuration.Get(key, propertyType);
 	}
