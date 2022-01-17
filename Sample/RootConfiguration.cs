@@ -1,5 +1,6 @@
 #nullable disable warnings
 using AttributedConfiguration;
+using Microsoft.Extensions.Configuration;
 
 namespace Sample;
 
@@ -26,6 +27,11 @@ public class RootConfiguration {
 
 	[Name("Nested")]
 	public NestedConfiguration Object { get; }
+
+	public IConfiguration Configuration { get; set; }
+
+	[Name("Nested")]
+	public IConfiguration NestedConfiguration { get; set; }
 
 	public bool[] BoolArray { get; }
 

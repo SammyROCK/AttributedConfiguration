@@ -1,9 +1,11 @@
 using AttributedConfiguration;
+using Microsoft.Extensions.Configuration;
 
 namespace Sample;
 
 [Configure("[configuration]")]
 public class NestedConfiguration {
+	public IConfiguration Configuration { get; set; }
 
 	[Optional]
 	public bool? Bool { get; }

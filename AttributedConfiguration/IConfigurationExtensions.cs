@@ -103,7 +103,15 @@ public static class IConfigurationExtensions {
 			return dict;
 		}
 
-		return configuration.GetSection(key).Resolve(type);
+
+		var isConfiguration = type == typeof(IConfiguration) || type == typeof(IConfigurationSection);
+		if(isConfiguration && key.Equals("Configuration", StringComparison.OrdinalIgnoreCase)) {
+			return configuration;
+		}
+
+		var configurationSection = configuration.GetSection(key);
+		if(isConfiguration) { return configurationSection; }
+		return configurationSection.Resolve(type);
 	}
 
 	public static object? TryGet(this IConfiguration configuration, string key, Type type) {
@@ -125,7 +133,14 @@ public static class IConfigurationExtensions {
 			return configuration.GetDict(key, genericArguments[0], genericArguments[1]);
 		}
 
+		var isConfiguration = type == typeof(IConfiguration) || type == typeof(IConfigurationSection);
+		if(isConfiguration && key.Equals("Configuration", StringComparison.OrdinalIgnoreCase)) {
+			return configuration;
+		}
+
 		var configurationSection = configuration.GetSection(key);
+		if(isConfiguration) { return configurationSection; }
+
 		if(configurationSection.Exists() is false) { return null; }
 		return configurationSection.Resolve(type);
 	}
