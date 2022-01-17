@@ -61,4 +61,4 @@ jobs:
       run: dotnet pack --output $RUNNER_TEMP --include-symbols --include-source --no-build
 
     - name: Push
-      run: dotnet nuget push $RUNNER_TEMP/$REPOSITORY_NAME.$VERSION.nupkg -s GitHub --api-key $NUGET_PASS
+      run: dotnet nuget push $RUNNER_TEMP/$REPOSITORY_NAME.*.nupkg -s GitHub --api-key $NUGET_PASS
