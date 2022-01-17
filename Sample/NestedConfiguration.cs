@@ -1,3 +1,4 @@
+#nullable disable warnings
 using AttributedConfiguration;
 using Microsoft.Extensions.Configuration;
 
