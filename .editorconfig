@@ -26,7 +26,7 @@ dotnet_sort_system_directives_first = false
 file_header_template = unset
 
 # File-Scoped namespaces
-csharp_style_namespace_declarations=file_scoped:error
+csharp_style_namespace_declarations=block_scoped:error
 
 # this. and Me. preferences
 dotnet_style_qualification_for_event = true:error

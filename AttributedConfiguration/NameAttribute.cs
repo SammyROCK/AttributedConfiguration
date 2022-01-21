@@ -1,12 +1,12 @@
 using System;
 
-namespace AttributedConfiguration;
+namespace AttributedConfiguration {
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+	public class NameAttribute : Attribute {
+		public NameAttribute(string name) {
+			this.Name = name;
+		}
 
-[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-public class NameAttribute : Attribute {
-	public NameAttribute(string name) {
-		this.Name = name;
+		public string Name { get; }
 	}
-
-	public string Name { get; }
 }

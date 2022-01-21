@@ -1,15 +1,15 @@
-namespace AttributedConfiguration;
+namespace AttributedConfiguration {
+	public enum TimeSource {
+		Undefined = 0,
 
-public enum TimeSource {
-	Undefined = 0,
+		InMilliseconds,
 
-	InMilliseconds,
+		InSeconds,
 
-	InSeconds,
+		InMinutes,
 
-	InMinutes,
+		InHours,
 
-	InHours,
-
-	InDays
+		InDays
+	}
 }
