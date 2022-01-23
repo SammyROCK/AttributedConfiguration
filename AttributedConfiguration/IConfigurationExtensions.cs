@@ -172,7 +172,7 @@ namespace AttributedConfiguration {
 			=> Enum.TryParse(enumType, configuration.TryGetString(key), out var value) ? value : null;
 
 		public static double? TryGetDouble(this IConfiguration configuration, string key)
-			=> double.TryParse(configuration.TryGetString(key), NumberStyles.Any, CultureInfo.InvariantCulture, out var value) ? value : default;
+			=> double.TryParse(configuration.TryGetString(key), NumberStyles.Any, CultureInfo.InvariantCulture, out var value) ? value : (double?)null;
 
 		public static string GetString(this IConfiguration configuration, string key)
 			=> configuration.TryGetString(key)
