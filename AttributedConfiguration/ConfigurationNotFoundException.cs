@@ -1,22 +1,12 @@
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace AttributedConfiguration {
-	public class ConfigurationNotFoundException : Exception {
+	public class ConfigurationNotFoundException : ConfigurationException {
 		public ConfigurationNotFoundException(IConfiguration configuration, string key)
-			: base(FormatMessage(configuration, key)) {
-			this.Configuration = configuration;
-			this.Key = key;
+			: base(configuration, key) {
 		}
 
-		public IConfiguration Configuration { get; }
-		public string Key { get; }
-
-		private static string FormatMessage(IConfiguration configuration, string key) {
-			var configurationPath = configuration is IConfigurationSection configurationSection
-				  ? $"{configurationSection.Path}:{key}"
-				  : key;
-
+		protected override string FormatMessage(string configurationPath) {
 			return $"Configuration {configurationPath} was not found";
 		}
 	}

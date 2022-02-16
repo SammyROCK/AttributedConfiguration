@@ -53,7 +53,7 @@ namespace AttributedConfiguration {
 			return instance;
 		}
 
-		public static object? GetValue(this IConfiguration configuration, PropertyInfo propertyInfo) {
+		internal static object? GetValue(this IConfiguration configuration, PropertyInfo propertyInfo) {
 			var optionalAttribute = propertyInfo.GetCustomAttribute<OptionalAttribute>();
 			var key = propertyInfo.GetCustomAttribute<NameAttribute>()?.Name ?? propertyInfo.Name;
 
@@ -66,19 +66,23 @@ namespace AttributedConfiguration {
 				}
 			}
 
-			if(optionalAttribute != null) {
-				var value = configuration.TryGet(key, propertyType);
+			try {
+				if(optionalAttribute != null) {
+					var value = configuration.TryGet(key, propertyType);
 
-				if(optionalAttribute is DefaultAttribute defaultAttribute) {
-					value ??= defaultAttribute.TimeSource != TimeSource.Undefined
-						? defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!)
-						: defaultAttribute.DefaultValue;
+					if(optionalAttribute is DefaultAttribute defaultAttribute) {
+						value ??= defaultAttribute.TimeSource != TimeSource.Undefined
+							? defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!)
+							: defaultAttribute.DefaultValue;
+					}
+
+					return value;
 				}
 
-				return value;
+				return configuration.Get(key, propertyType);
+			} catch(Exception ex) when(ex is FormatException) {
+				throw new ConfigurationFormatException(configuration, key, propertyType, ex);
 			}
-
-			return configuration.Get(key, propertyType);
 		}
 
 		public static object Get(this IConfiguration configuration, string key, Type type) {
