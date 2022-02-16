@@ -21,6 +21,8 @@ namespace Sample {
 
 		public TimeSpan Time { get; }
 
+		public Uri Uri { get; }
+
 		[Default(55.5, TimeSource.InSeconds)]
 		public TimeSpan DefaultMissingTime { get; }
 

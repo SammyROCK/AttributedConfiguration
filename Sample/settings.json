@@ -7,6 +7,7 @@
   "string": "cachorro",
   "enum": "something",
   "timeInSeconds": 156.5,
+  "uri": "google",
 
   "boolArray": [ true, false ],
   "intArray": [ 123, 456 ],

@@ -92,6 +92,7 @@ namespace AttributedConfiguration {
 				return Convert.ChangeType(configuration.GetString(key), type, CultureInfo.InvariantCulture);
 			}
 			if(type == typeof(TimeSpan)) { return configuration.GetTimespan(key); }
+			if(type == typeof(Uri)) { return new Uri(configuration.GetString(key)); }
 
 			if(type.IsArray) {
 				var array = configuration.GetMany(key, type.GetElementType()!);
@@ -126,6 +127,7 @@ namespace AttributedConfiguration {
 				return Convert.ChangeType(stringValue, type, CultureInfo.InvariantCulture);
 			}
 			if(type == typeof(TimeSpan)) { return configuration.TryGetTimespan(key); }
+			if(type == typeof(Uri)) { return configuration.TryGetUri(key); }
 
 			if(type.IsArray) {
 				return configuration.GetMany(key, type.GetElementType()!);
@@ -177,6 +179,12 @@ namespace AttributedConfiguration {
 
 		public static double? TryGetDouble(this IConfiguration configuration, string key)
 			=> double.TryParse(configuration.TryGetString(key), NumberStyles.Any, CultureInfo.InvariantCulture, out var value) ? value : (double?)null;
+
+		public static Uri? TryGetUri(this IConfiguration configuration, string key) {
+			var stringValue = configuration.TryGetString(key);
+			if(stringValue is null) { return null; }
+			return new Uri(stringValue);
+		}
 
 		public static string GetString(this IConfiguration configuration, string key)
 			=> configuration.TryGetString(key)
