@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace Sample {
 	[Configure("[configuration]")]
 	public class NestedConfiguration {
-		public IConfiguration Configuration { get; set; }
+		public IConfiguration Configuration { get; }
 
 		[Optional]
 		public bool? Bool { get; }

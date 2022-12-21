@@ -29,10 +29,10 @@ namespace Sample {
 		[Name("Nested")]
 		public NestedConfiguration Object { get; }
 
-		public IConfiguration Configuration { get; set; }
+		public IConfiguration Configuration { get; }
 
 		[Name("Nested")]
-		public IConfiguration NestedConfiguration { get; set; }
+		public IConfiguration NestedConfiguration { get; }
 
 		public bool[] BoolArray { get; }
 
