@@ -1,6 +1,6 @@
 #nullable disable warnings
-using NeoAttributedConfiguration;
 using Microsoft.Extensions.Configuration;
+using NeoAttributedConfiguration;
 
 namespace Sample {
 	[Configure]
