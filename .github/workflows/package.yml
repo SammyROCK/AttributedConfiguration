@@ -34,9 +34,6 @@ jobs:
       run: |
         echo "VERSION="$(echo $VERSION)"" >> $GITHUB_ENV
       
-    - name: Install dotnet format
-      run: dotnet tool install -g dotnet-format
-
     - name: Restore
       run: dotnet restore
 
