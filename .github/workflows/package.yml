@@ -11,12 +11,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      
-    - name: Install DotNet 6.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.x' # SDK Version to use; x will use the latest version of the 3.1 channel
-      
+
     - name: Get current date
       id: date
       run: echo "::set-output name=value::$(date +'%Y.%-m.%-d')"
@@ -52,7 +47,7 @@ jobs:
       run: dotnet format --verify-no-changes
 
     - name: Pack
-      run: dotnet pack --output $RUNNER_TEMP --include-symbols --include-source --no-build -p:RepositoryUrl=$REPOSITORY_URI -p:PackageProjectUrl=$REPOSITORY_URI -p:Company=Cappta -p:Authors=Cappta -p:PackageLicenseExpression=MIT -p:RepositoryType=git -p:PackageVersion=$VERSION -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PublishRepositoryUrl=true -p:EmbedUntrackedSources=true
+      run: dotnet pack --output $RUNNER_TEMP --include-symbols --include-source --no-build -p:RepositoryUrl=$REPOSITORY_URI -p:PackageProjectUrl=$REPOSITORY_URI -p:Authors=SammyROCK -p:PackageLicenseExpression=MIT -p:RepositoryType=git -p:PackageVersion=$VERSION -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PublishRepositoryUrl=true -p:EmbedUntrackedSources=true
 
     - name: Push
       run: dotnet nuget push $RUNNER_TEMP/$REPOSITORY_NAME.$VERSION.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_PASS

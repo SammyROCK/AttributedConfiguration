@@ -71,9 +71,11 @@ namespace AttributedConfiguration {
 					var value = configuration.TryGet(key, propertyType);
 
 					if(optionalAttribute is DefaultAttribute defaultAttribute) {
-						value ??= defaultAttribute.TimeSource != TimeSource.Undefined
-							? defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!)
-							: defaultAttribute.DefaultValue;
+						if(defaultAttribute.TimeSource != TimeSource.Undefined) {
+							value ??= defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!);
+						} else { 
+							value ??= Convert.ChangeType(defaultAttribute.DefaultValue, propertyType);
+						}
 					}
 
 					return value;

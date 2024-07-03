@@ -26,6 +26,9 @@ namespace Sample {
 		[Default(55.5, TimeSource.InSeconds)]
 		public TimeSpan DefaultMissingTime { get; }
 
+		[Default(5)]
+		public decimal DefaultDecimal { get; }
+
 		[Name("Nested")]
 		public NestedConfiguration Object { get; }
 
