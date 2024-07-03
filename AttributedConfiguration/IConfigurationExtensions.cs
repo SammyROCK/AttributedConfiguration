@@ -73,7 +73,7 @@ namespace AttributedConfiguration {
 					if(optionalAttribute is DefaultAttribute defaultAttribute) {
 						if(defaultAttribute.TimeSource != TimeSource.Undefined) {
 							value ??= defaultAttribute.TimeSource.Parse((double)defaultAttribute.DefaultValue!);
-						} else { 
+						} else {
 							value ??= Convert.ChangeType(defaultAttribute.DefaultValue, propertyType);
 						}
 					}
