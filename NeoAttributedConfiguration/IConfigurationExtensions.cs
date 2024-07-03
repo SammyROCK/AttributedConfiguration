@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public static class IConfigurationExtensions {
 		public static T Resolve<T>(this IConfiguration configuration) {
 			var type = typeof(T);
@@ -216,7 +216,7 @@ namespace AttributedConfiguration {
 
 		public static string[] GetStrings(this IConfiguration configuration, string key)
 			=> configuration.GetSections(key)
-				.Select(section => section.Value)
+				.Select(section => section.Value!)
 				.ToArray();
 
 		public static TimeSpan[] GetManyTimeSpan(this IConfiguration configuration, string key)
@@ -224,7 +224,7 @@ namespace AttributedConfiguration {
 				.SelectMany(
 					timeSource => configuration.GetSections($"{key}{timeSource}")
 						.Select(
-							section => timeSource.Parse(section.Value)
+							section => timeSource.Parse(section.Value!)
 						)
 				).ToArray();
 
@@ -248,7 +248,7 @@ namespace AttributedConfiguration {
 					},
 					section => {
 						if(valueType.IsEnum) {
-							return Enum.Parse(valueType, section.Value, true);
+							return Enum.Parse(valueType, section.Value!, true);
 						}
 						if(valueType == typeof(string)) { return section.Value; }
 						if(valueType.IsPrimitive || valueType == typeof(decimal)) {

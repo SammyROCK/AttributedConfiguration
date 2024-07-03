@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public class ConfigurationFormatException : ConfigurationException {
 		public ConfigurationFormatException(IConfiguration configuration, string key, Type targetType, Exception? innerException = null)
 			: base(configuration, key, innerException) {

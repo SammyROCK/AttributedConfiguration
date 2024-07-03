@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public static class IServiceCollectionExtensions {
 		public static IServiceCollection AddAttributedConfigurations(this IServiceCollection serviceCollection, IConfiguration configuration) {
 			foreach(var (type, configureAttribute) in AppDomain.CurrentDomain.EnumerateTypesWithAttribute<ConfigureAttribute>()) {

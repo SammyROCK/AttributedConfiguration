@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
 	public class DefaultAttribute : OptionalAttribute {
 		public DefaultAttribute(object? defaultValue = null) {

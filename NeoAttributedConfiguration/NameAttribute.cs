@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public class NameAttribute : Attribute {
 		public NameAttribute(string name) {

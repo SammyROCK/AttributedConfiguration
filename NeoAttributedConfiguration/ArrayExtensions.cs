@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public static class ArrayExtensions {
 		public static Array ToTypeArray<T>(this T[] values, Type type) {
 			var typeArray = Array.CreateInstance(type, values.Length);

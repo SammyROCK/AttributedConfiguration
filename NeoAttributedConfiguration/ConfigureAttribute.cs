@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 	public class ConfigureAttribute : Attribute {
 		public ConfigureAttribute(string? section = null, Type? serviceType = null) {

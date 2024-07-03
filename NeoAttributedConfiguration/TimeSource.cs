@@ -1,4 +1,4 @@
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public enum TimeSource {
 		Undefined = 0,
 

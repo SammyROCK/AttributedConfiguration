@@ -1,5 +1,5 @@
 #nullable disable warnings
-using AttributedConfiguration;
+using NeoAttributedConfiguration;
 using Microsoft.Extensions.Configuration;
 
 namespace Sample {

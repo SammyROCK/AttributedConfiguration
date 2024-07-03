@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public class ConfigurationNotFoundException : ConfigurationException {
 		public ConfigurationNotFoundException(IConfiguration configuration, string key)
 			: base(configuration, key) {

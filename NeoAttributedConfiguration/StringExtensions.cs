@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public static class StringExtensions {
 		public static TimeSource GetTimeSource(this string key) {
 			if(key.IsFromTimeSource(TimeSource.InDays)) { return TimeSource.InDays; }

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public abstract class ConfigurationException : Exception {
 		private readonly Lazy<string> message;
 

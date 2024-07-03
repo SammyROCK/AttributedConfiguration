@@ -1,6 +1,6 @@
 using System;
 
-namespace AttributedConfiguration {
+namespace NeoAttributedConfiguration {
 	public static class TimeSourceExtensions {
 		public static TimeSpan Parse(this TimeSource timeSource, string stringValue) {
 			var doubleValue = double.Parse(stringValue);

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AttributedConfiguration\NeoAttributedConfiguration.csproj" />
+    <ProjectReference Include="..\NeoAttributedConfiguration\NeoAttributedConfiguration.csproj" />
   </ItemGroup>
 
   <ItemGroup>

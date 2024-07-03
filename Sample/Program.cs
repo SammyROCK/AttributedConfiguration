@@ -1,5 +1,5 @@
 // See https://aka.ms/new-console-template for more information
-using AttributedConfiguration;
+using NeoAttributedConfiguration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
